@@ -1,0 +1,6 @@
+{
+  "prettier.tslintIntegration": true,
+  "typescript.format.enable": false,
+  "tslint.jsEnable": true,
+  "eslint.enable": false
+}

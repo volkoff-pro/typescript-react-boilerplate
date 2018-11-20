@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "tslint-config-airbnb",
+    "tslint:latest",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "rules": {
+    "prettier": true
+  },
+  "linterOptions": {
+    "exclude": ["node_modules"]
+  }
+}
