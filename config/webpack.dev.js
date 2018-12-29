@@ -5,16 +5,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const base = require('./webpack.base');
 
 module.exports = merge(base, {
-  mode: 'development',
-  devtool: 'cheap-module-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true,
-    overlay: true,
+    hot: true,
     open: true,
-    hot: true
+    overlay: true,
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
+  devtool: 'cheap-module-source-map',
+  mode: 'development',
+  plugins: [new webpack.HotModuleReplacementPlugin()]
 });
