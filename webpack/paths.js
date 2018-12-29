@@ -28,15 +28,15 @@ function getServedPath(appPackageJson) {
 }
 
 module.exports = {
-  appPath: resolveApp('.'),
   appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
+  appDist: resolveApp('dist'),
   appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveApp('src/index.js'),
-  appPackageJson: resolveApp('package.json'),
-  appSrc: resolveApp('src'),
-  appDist: resolveApp('dist'),
   appNodeModules: resolveApp('node_modules'),
+  appPackageJson: resolveApp('package.json'),
+  appPath: resolveApp('.'),
+  appPublic: resolveApp('public'),
+  appSrc: resolveApp('src'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json'))
 };
