@@ -1,9 +1,10 @@
-const path = require('path');
+/* tslint:disable */
+const webpack = require('webpack');
+const paths = require('./paths');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  // TODO: replace to root
-  entry: path.resolve(__dirname, 'src/index.tsx'),
+  entry: [paths.appIndexTs],
   module: {
     rules: [
       {
@@ -31,17 +32,14 @@ module.exports = {
       }
     ]
   },
-  output: {
-    chunkFilename: 'static/js/[name].chunk.js',
-    filename: 'static/js/bundle.js',
-    pathinfo: true,
-    publicPath: '/'
-  },
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      template: 'public/index.html'
-    })
+      template: paths.appHtml
+    }),
+    new webpack.HashedModuleIdsPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.ProgressPlugin()
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']

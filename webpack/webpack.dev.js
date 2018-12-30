@@ -1,18 +1,35 @@
-const path = require('path');
+/* tslint:disable */
+const paths = require('./paths');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const base = require('./webpack.base');
+
+const publicPath = '/';
 
 module.exports = merge(base, {
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    compress: true,
+    contentBase: paths.appPublic,
     historyApiFallback: true,
     hot: true,
     open: true,
     overlay: true,
+    publicPath: publicPath,
+    watchContentBase: true
   },
-  devtool: 'cheap-module-source-map',
+  devtool: 'inline-source-map',
   mode: 'development',
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  output: {
+    chunkFilename: 'static/js/[name].chunk.js',
+    filename: 'static/js/bundle.js',
+    pathinfo: true,
+    publicPath,
+  },
+  plugins: [
+    // new MiniCssExtractPlugin({
+    //   filename: '[name].css'
+    // }),
+    new webpack.HotModuleReplacementPlugin()
+  ]
 });

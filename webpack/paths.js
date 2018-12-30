@@ -1,3 +1,4 @@
+/* tslint:disable */
 const path = require('path');
 const fs = require('fs');
 
@@ -31,7 +32,7 @@ module.exports = {
   appBuild: resolveApp('build'),
   appDist: resolveApp('dist'),
   appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/index.js'),
+  appIndexTs: resolveApp('src/index.tsx'),
   appNodeModules: resolveApp('node_modules'),
   appPackageJson: resolveApp('package.json'),
   appPath: resolveApp('.'),
