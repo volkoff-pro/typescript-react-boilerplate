@@ -3,7 +3,7 @@ const paths = require('./paths');
 const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const base = require('./webpack.base');
 
 const pathsToClean = ['dist'];
@@ -21,6 +21,33 @@ module.exports = merge(base, {
   bail: true,
   devtool: 'source-map',
   mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.s?css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      }
+    ]
+  },
   optimization: {
     minimizer: [
       new TerserPlugin({
@@ -58,8 +85,8 @@ module.exports = merge(base, {
 
   plugins: [
     new CleanWebpackPlugin(pathsToClean, cleanOptions),
-    // new MiniCssExtractPlugin({
-    //   filename: 'static/css/[name].[hash:8].css'
-    // })
+    new MiniCssExtractPlugin({
+      filename: 'static/css/[name].[hash:8].css'
+    })
   ]
 });
