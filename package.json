@@ -9,7 +9,7 @@
     "lint": "tslint -c tslint.json -p tsconfig.json -t stylish 'src/**/*.{ts,tsx}'",
     "lint:fix": "tslint -c tslint.json -p tsconfig.json -t stylish 'src/**/*.{ts,tsx}' --fix",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
-    "test": "jest",
+    "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
   "husky": {

@@ -15,7 +15,7 @@ const CSSModuleLoader = {
     minimize: true,
     namedExport: true,
     camelCase: true,
-    sass: true
+    banner: "// *** Auto-generated File - Do Not Edit Manually ***"
   }
 }
 
