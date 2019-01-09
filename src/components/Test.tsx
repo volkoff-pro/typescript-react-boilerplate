@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import styles from './styles.module.scss';
 
 export interface ITestProps {
   compiler: string;
@@ -6,7 +7,7 @@ export interface ITestProps {
 }
 
 export const Test = (props: ITestProps) => (
-  <h1>
+  <h1 className={styles.header}>
     Hello from {props.compiler} and {props.framework}
   </h1>
 );

@@ -21,33 +21,6 @@ module.exports = merge(base, {
   bail: true,
   devtool: 'source-map',
   mode: 'production',
-  module: {
-    rules: [
-      {
-        test: /\.s?css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      }
-    ]
-  },
   optimization: {
     minimizer: [
       new TerserPlugin({

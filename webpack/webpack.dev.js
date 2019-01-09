@@ -20,33 +20,6 @@ module.exports = merge(base, {
   },
   devtool: 'inline-source-map',
   mode: 'development',
-  module: {
-    rules: [
-      {
-        test: /\.s?css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      }
-    ]
-  },
   output: {
     chunkFilename: 'static/js/[name].chunk.js',
     filename: 'static/js/bundle.js',
