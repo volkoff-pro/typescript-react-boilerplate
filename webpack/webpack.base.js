@@ -4,6 +4,8 @@ const paths = require('./paths');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 const CSSModuleLoader = {
   loader: 'typings-for-css-modules-loader',
@@ -67,46 +69,65 @@ module.exports = {
         ]
       },
       {
-        test: /\.(ts|tsx)$/,
-        loader: require.resolve('ts-loader'),
-        exclude: /node_modules/
-      },
-      {
-        test: /\.s?css$/,
-        exclude: /\.module\.s?css$/,
-        use: [
+        oneOf: [
           {
-            loader: MiniCssExtractPlugin.loader,
+            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            loader: require.resolve('url-loader'),
             options: {
-              sourceMap: true
+              limit: 10000,
+              name: 'static/media/[name].[hash:8].[ext]'
             }
           },
-          CSSLoader,
-          PostCSSLoader,
           {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      },
-      {
-        test: /\.module\.s?css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              sourceMap: true
-            }
+            test: /\.(ts|tsx)$/,
+            loader: require.resolve('ts-loader'),
+            exclude: /node_modules/
           },
-          CSSModuleLoader,
-          PostCSSLoader,
           {
-            loader: 'sass-loader',
+            test: /\.s?css$/,
+            exclude: /\.module\.s?css$/,
+            use: [
+              {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                  sourceMap: true
+                }
+              },
+              CSSLoader,
+              PostCSSLoader,
+              {
+                loader: 'sass-loader',
+                options: {
+                  sourceMap: true
+                }
+              }
+            ]
+          },
+          {
+            test: /\.module\.s?css$/,
+            use: [
+              {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                  sourceMap: true
+                }
+              },
+              CSSModuleLoader,
+              PostCSSLoader,
+              {
+                loader: 'sass-loader',
+                options: {
+                  sourceMap: true
+                }
+              }
+            ]
+          },
+          {
+            loader: require.resolve('file-loader'),
+            exclude: [/\.(js|mjs|jsx)$/, /\.html$/, /\.json$/],
             options: {
-              sourceMap: true
-            }
+              name: 'static/media/[name].[hash:8].[ext]',
+            },
           }
         ]
       }
@@ -117,6 +138,8 @@ module.exports = {
       inject: true,
       template: paths.appHtml
     }),
+    new CaseSensitivePathsPlugin(),
+    new ManifestPlugin(),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.ProgressPlugin(),
