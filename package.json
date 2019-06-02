@@ -1,7 +1,7 @@
 {
-  "name": "typescript-simple-boilerplate",
-  "version": "0.0.2",
-  "description": "Typescript Boilerplate",
+  "name": "typescript-react-boilerplate",
+  "version": "0.0.3",
+  "description": "Typescript React Boilerplate",
   "main": "index.ts",
   "scripts": {
     "start": "webpack-dev-server --config webpack/webpack.dev.js",
