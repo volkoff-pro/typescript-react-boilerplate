@@ -1,18 +1,18 @@
 /* tslint:disable */
 const paths = require('./paths');
 const merge = require('webpack-merge');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const base = require('./webpack.base');
 
-const pathsToClean = ['dist'];
+// const pathsToClean = ['dist'];
 
-const cleanOptions = {
-  allowExternal: true,
-  root: paths.appPath,
-  verbose: true
-};
+// const cleanOptions = {
+//   allowExternal: true,
+//   root: paths.appPath,
+//   verbose: true
+// };
 
 const publicPath = paths.servedPath;
 // const publicUrl = publicPath.slice(0, -1);
@@ -57,7 +57,9 @@ module.exports = merge(base, {
   },
 
   plugins: [
-    new CleanWebpackPlugin(pathsToClean, cleanOptions),
+    new CleanWebpackPlugin({
+      verbose: true
+    }),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].[hash:8].css'
     })
