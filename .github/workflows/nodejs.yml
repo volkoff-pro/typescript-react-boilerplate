@@ -1,0 +1,31 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: GitHub Action for Yarn - Install
+      uses: Borales/actions-yarn@v2.1.0
+      with:
+        cmd: install # will run `yarn install` command
+    - name: GitHub Action for Yarn - Build
+      uses: Borales/actions-yarn@v2.1.0
+      with:
+        cmd: build # will run `yarn build` command
+    - name: GitHub Action for Yarn - Test
+      uses: Borales/actions-yarn@v2.1.0
+      with:
+        cmd: test # will run `yarn test` command
