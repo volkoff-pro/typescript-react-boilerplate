@@ -1,7 +1,7 @@
 import React, { Fragment, ReactNode } from 'react';
 
-export interface ITestProps {
+export interface TestProps {
   children?: ReactNode;
 }
 
-export const App = (props: ITestProps) => <Fragment>{props.children}</Fragment>;
+export const App = (props: TestProps): JSX.Element => <Fragment>{props.children}</Fragment>;

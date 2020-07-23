@@ -6,9 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack/webpack.dev.js",
     "build": "webpack --config webpack/webpack.prod.js",
-    "lint": "tslint -c tslint.json -p tsconfig.json -t stylish 'src/**/*.{ts,tsx}'",
-    "lint:fix": "tslint -c tslint.json -p tsconfig.json -t stylish 'src/**/*.{ts,tsx}' --fix",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json",
+    "eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx src",
+    "eslint:dump": "eslint --print-config ./.eslintrc.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
@@ -20,7 +19,7 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "tslint -c tslint.json -p tsconfig.json -t stylish --fix",
+      "eslint --cache",
       "git add"
     ]
   },
@@ -47,8 +46,10 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.4.4",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^2.3.0",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.1.0",
@@ -61,7 +62,7 @@
     "node-sass": "^4.13.1",
     "postcss-flexbugs-fixes": "^4.2.0",
     "postcss-loader": "^3.0.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.5",
     "sass-loader": "^8.0.2",
     "terser-webpack-plugin": "^2.3.4",
     "ts-jest": "^24.1.0",
