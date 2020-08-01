@@ -50,6 +50,7 @@ module.exports = {
   entry: [paths.appIndexTs],
   module: {
     rules: [
+      /*
       {
         enforce: 'pre',
         exclude: /node_modules/,
@@ -68,6 +69,7 @@ module.exports = {
           }
         ]
       },
+      */
       {
         oneOf: [
           {
