@@ -2,4 +2,5 @@
 
 - React 16.x
 - TypeScript 3.x.x
-- Initial Linting settings
+- Eslint settings for TypeScript and React
+- Jest unit testing
