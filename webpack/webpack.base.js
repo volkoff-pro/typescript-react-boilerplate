@@ -132,9 +132,8 @@ module.exports = (env) => {
       new CaseSensitivePathsPlugin(),
       new ManifestPlugin(),
       new webpack.HashedModuleIdsPlugin(),
-      new webpack.NamedModulesPlugin(),
       new webpack.ProgressPlugin(),
-      new webpack.WatchIgnorePlugin([/css\.d\.tx$/, /scss\.d\.tx$/]),
+      // new webpack.WatchIgnorePlugin([/css\.d\.tx$/, /scss\.d\.tx$/]),
     ],
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.scss'],
