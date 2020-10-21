@@ -1,7 +1,9 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-export interface TestProps {
-  children?: ReactNode;
-}
+const App: React.FC = () => (
+  <div>
+    <h1>App component</h1>
+  </div>
+);
 
-export const App: React.FC<TestProps> = ({children}: TestProps) => <>{children}</>;
+export { App };
