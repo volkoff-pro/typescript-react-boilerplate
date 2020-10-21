@@ -1,4 +1,3 @@
-/* tslint:disable */
 const path = require('path');
 const fs = require('fs');
 
@@ -16,9 +15,9 @@ function ensureSlash(inputPath, needsSlash) {
 }
 
 const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
-const getPublicUrl = appPackageJson =>
+const getPublicUrl = (appPackageJson) =>
   envPublicUrl || require(appPackageJson).homepage;
 
 function getServedPath(appPackageJson) {
@@ -40,5 +39,5 @@ module.exports = {
   appPublic: resolveApp('public'),
   appSrc: resolveApp('src'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
-  servedPath: getServedPath(resolveApp('package.json'))
+  servedPath: getServedPath(resolveApp('package.json')),
 };

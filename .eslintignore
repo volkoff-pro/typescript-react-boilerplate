@@ -1,5 +1,10 @@
 src/serviceWorker.ts
 src/**/__tests__/**
+src/**/styles*.d.ts
+jest.config.js
+.eslintrc.js
 node_modules
 dist
 coverage
+webpack
+config
